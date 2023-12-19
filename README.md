@@ -90,7 +90,9 @@ If passed as argument to the `len` method, the dataloader should return the numb
 
 ### Data preprocessing
 
-You should implement a ...
+Create at least three classes for data preprocessing:
+1. One class for normalizing a dataset of images in the 0-1 range. Note: images are encoded as arrays with values in the 0-255 range.
+2. 
 
 ## Extra (up to 1 point): inference through a pretrained neural network 
 
@@ -99,9 +101,9 @@ The model should be able to perform inference on one or more data points of a da
 
 To do so, you can use pretrained neural networks on popular image benchmarks.
 The usage of the dataset ImageNet is not recommended, since it is too large to be used in this project, and it is currently unavailable for download in legal manners.
-You can use, for instance, the [Imagenette](https://github.com/fastai/imagenette) dataset. There are several available pretrained models on Imagenette, which you can find on GitHub with the `imagenette` topic: [https://github.com/topics/imagenette].
+You can use, for instance, the [Imagenette](https://github.com/fastai/imagenette) dataset. There are several available pretrained models on Imagenette, which you can find on GitHub with the `imagenette` topic: https://github.com/topics/imagenette.
 
-With reference to this ResNet18 implementation: [https://github.com/GeorgeMLP/imagenette-classification], to make it work with your model, you will need to:
+With reference to this ResNet18 implementation: https://github.com/GeorgeMLP/imagenette-classification, to make it work with your model, you will need to:
 
    1. [Install PyTorch and Torchvision](https://pytorch.org/get-started/locally/)
    2. Create the neural network (which will be wrapped by the `Model` class):
@@ -133,6 +135,8 @@ With reference to this ResNet18 implementation: [https://github.com/GeorgeMLP/im
       ```python
       model.eval()
       ```
+
+   5. Remember, before passing the data to the model, to apply the preprocessing pipeline indicated in the repo: https://github.com/GeorgeMLP/imagenette-classification/blob/master/Training%20Model.py, see lines 25-30.
 
 # Demo
 
