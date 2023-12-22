@@ -26,7 +26,7 @@ The final product will need to be submitted as a **private** GitHub repository w
 
 You will need to implement a hierarchy of classes to manage datasets.
 The implementation will need to contain a base class, defining all the methods and attributes in common to all of the datasets.
-Datasets should have two variants: one including both data proper and labels, the other including only the data proper (which can be used, e.g., for testing when there are no labels available).
+Datasets should have two variants: one including both data and labels, the other including only the dat (which can be used, e.g., for testing when there are no labels available).
 
 All the datasets should include a `root` attribute, which identifies the root location where the data is stored into the disk.
 Each data point (e.g., an image, an audio file) should be stored as a single file in the disk, with the name of the file uniquely identifying the data point.
@@ -67,11 +67,11 @@ The eager implementation should **load all the data into memory at once**, while
 
 In all the cases, the data should be accessed using the subsetting operator (e.g., `dataset[i]`), which should return (using the data structure you prefer) the data at the specified index.
 In the case of a dataset with labels, you should return both the data and the corresponding label.
-If the dataset has no labels, you should return only the data proper.
+If the dataset has no labels, you should return only the data.
 
-The datasets should have a method for **splitting** the data into training and test sets.
+The datasets should have a method for **splitting** the data (and labels, if applicable) into training and test sets.
 The user should be able to split the data by specifying the percentage of data to be used for training.
-This function should return two datasets as output.
+This functionality should return two datasets as output.
 
 You should create at least two datasets with these characteristics, one handling **images**, the other handling **audio files**.
 For handling images, you can load them using one of many Python libraries for image processing, such as [Pillow](https://pillow.readthedocs.io/en/stable/) or [OpenCV](https://opencv.org/).
