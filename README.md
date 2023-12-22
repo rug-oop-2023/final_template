@@ -26,7 +26,7 @@ The final product will need to be submitted as a **private** GitHub repository w
 
 You will need to implement a hierarchy of classes to manage datasets.
 The implementation will need to contain a base class, defining all the methods and attributes in common to all of the datasets.
-Datasets should have two variants: one including both data and labels, the other including only the dat (which can be used, e.g., for testing when there are no labels available).
+Datasets should have two variants: one including both data and labels, the other including only the data (which can be used, e.g., for testing when there are no labels available).
 
 All the datasets should include a `root` attribute, which identifies the root location where the data is stored into the disk.
 Each data point (e.g., an image, an audio file) should be stored as a single file in the disk, with the name of the file uniquely identifying the data point.
