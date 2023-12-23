@@ -48,7 +48,7 @@ jobs:
         id: run_main
         run: |
           set +e
-          timeout 5 python3 part_2/main.py
+          timeout 5 python3 main.py
           exit_code=$?
           echo "EXIT_CODE=${exit_code}" >> $GITHUB_OUTPUT
 
