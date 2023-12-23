@@ -193,7 +193,7 @@ In the main, you should showcase the usage of your library.
 
 Notice that, for images and audio, showing means actually plotting some sample images, while, for audio, it refers to playing some sample audio tracks.
 
-1. [] Create an image dataset and an audio dataset. Show how you can access your data. You may also plot some images using the `matplotlib.pyplot.imshow` method.
+1. [ ] Create an image dataset and an audio dataset. Show how you can access your data. You may also plot some images using the `matplotlib.pyplot.imshow` method.
 
 - Showcase a dataset with and without labels.
 - Showcase a dataset for classification and regression.
@@ -205,8 +205,8 @@ Notice that, for images and audio, showing means actually plotting some sample i
     - For images: object detection and segmentation are **not** image classification tasks; regression tasks can be, e.g., age estimation.
     - For audio: be careful not to use datasets for speech-to-text or other Natural Language Processing-related tasks (the labels are more complicated in this case); regression tasks can be for example [tempo estimation](https://github.com/CPJKU/BallroomAnnotations/blob/master/README.md).
 
-2. [] Create a BatchLoader on top of two of these datasets (one for image, one for audio). Show its functionality with and without shuffling, with and without option to discard the last batch.
-3. [] Create a pipeline of preprocessing steps, one for audio, one for images:
+2. [ ] Create a BatchLoader on top of two of these datasets (one for image, one for audio). Show its functionality with and without shuffling, with and without option to discard the last batch.
+3. [ ] Create a pipeline of preprocessing steps, one for audio, one for images:
 
 - Show how you can apply the pipeline on top of a BatchLoader output.
   ```python
@@ -226,18 +226,18 @@ Notice that, for images and audio, showing means actually plotting some sample i
 
 Remind to always make use of the OOP concepts explained in the course:
 
-- [] Always implement encapsulation accordingly. All the attributes should be private, and the user should be able to access them only through getters and setters. The usage of the `@property` decorator is preferrable. Motivate any choice of public methods and attributes in the report.
+- [ ] Always implement encapsulation accordingly. All the attributes should be private, and the user should be able to access them only through getters and setters. The usage of the `@property` decorator is preferrable. Motivate any choice of public methods and attributes in the report.
   - Remember type hints. Use the pipe operator `|` to concatenate multiple types. For collections, write inside brackets the expected type of elements (e.g., `List[int]`).
   - Also, don't forget about the return types (even when `None`).
-- [] Make use of type checks. Code performing type checks should be better implemented as a private method, especially if repeated throughout the class.
+- [ ] Make use of type checks. Code performing type checks should be better implemented as a private method, especially if repeated throughout the class.
   - If you repeat code throughout different classes, you can either create an external class handling these tasks, or, if you have small utility functions (e.g., check int, convert something into something else) you can create a `util.py` script and put the functions there (outside the objects is fine as well); you may later access the functions as `from util import <utility_function>`
-- [] Make use of docstrings. Providing a documentation as HTML files (converted from the docstrings using software such as [sphinx](https://www.sphinx-doc.org/en/master/) or [napoleon](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/)) will provide a bouns of +0.5 points to the final score.
-- [] Take some moments for testing & refactoring. You don't need to use test-driven development for this project; nonetheless, you can still make use of specific tests to ensure that your code doesn't break when refactoring. Watch out for [code smells](https://refactoring.guru/refactoring/smells), especially bloaters [large class](https://refactoring.guru/smells/large-class) and [long method](https://refactoring.guru/smells/long-method).
+- [ ] Make use of docstrings. Providing a documentation as HTML files (converted from the docstrings using software such as [sphinx](https://www.sphinx-doc.org/en/master/) or [napoleon](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/)) will provide a bouns of +0.5 points to the final score.
+- [ ] Take some moments for testing & refactoring. You don't need to use test-driven development for this project; nonetheless, you can still make use of specific tests to ensure that your code doesn't break when refactoring. Watch out for [code smells](https://refactoring.guru/refactoring/smells), especially bloaters [large class](https://refactoring.guru/smells/large-class) and [long method](https://refactoring.guru/smells/long-method).
   - Smells like [duplicate code](https://refactoring.guru/smells/duplicate-code) and [ḍead code](https://refactoring.guru/smells/dead-code) are particularly bad since they (i) hinder readability and (ii) makes it easier to create bugs. These will be taken into account when grading
   - Ignore the [Object-Orientation Abusers smell](https://refactoring.guru/refactoring/smells/oo-abusers) since this course is specifically focussed into OOP.
-- [] As previously mentioned, use your report to motivate your decisions, like usage of public attributes or methods, unusual/nonintuitive choices on type hints, decisions to use classes not indicated in the requirements, etc.
-- [] Attend the practicals for asking questions to the lecturers and the TAs.
-- [] Check your emails often for announcements. There is no excuse for not reading your RUG email.
+- [ ] As previously mentioned, use your report to motivate your decisions, like usage of public attributes or methods, unusual/nonintuitive choices on type hints, decisions to use classes not indicated in the requirements, etc.
+- [ ] Attend the practicals for asking questions to the lecturers and the TAs.
+- [ ] Check your emails often for announcements. There is no excuse for not reading your RUG email.
 
 
 
