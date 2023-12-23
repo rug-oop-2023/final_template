@@ -3,9 +3,9 @@
 In this final project, you will be required to implement a complex application in Python using the OOP concept explained in the course.
 The project will need to contain the following elements:
 
-- An implementation of a hierarchy of classes to manage datasets, mainly with Machine Learning as an end goal:
+- An implementation of a hierarchy of classes to manage datasets, mainly with Machine Learning as an end goal.
 - A dataset wrapper, called `BatchLoader`, which handles the creation of batches of data for training a model.
-- A set of preprocessing tools for image and audio data
+- A set of preprocessing tools for image and audio data.
 
 The deadline for the project is set on **Sunday February 4th, 2024 23:59 CET**, without exceptions.
 
@@ -42,7 +42,7 @@ git push
 
 For any Git-related issues, please go to the pull request that is open and tag @oop-otoz with your question in the comments.
 
-## Datasets
+## Datasets (3 pts.)
 
 You will need to implement a hierarchy of classes to manage datasets.
 
@@ -52,33 +52,33 @@ You will need to implement a hierarchy of classes to manage datasets.
 - [ ] The datasets should return the number of datapoints in it if passed to the `len` built-in function.
 - [ ] Datasets can be used for both regression and classification.
 
-* In the case of **regression**, the data should be stored on disk in the `root` folder (and not any subfolder), with the labels stored in a separate file outside of the `root` folder.
-  The labels should be stored in a single file **outside of `root`**, with the file in a `.csv` format.
-  Each line contains information about a data point: the first column contains the filename and the second column containing the corresponding label.
-* In the case of **classification**, there are two possible formats:
+  * In the case of **regression**, the data should be stored on disk in the `root` folder (and not any subfolder), with the labels stored in a separate file outside of the `root` folder.
+    The labels should be stored in a single file **outside of `root`**, with the file in a `.csv` format.
+    Each line contains information about a data point: the first column contains the filename and the second column containing the corresponding label.
+  * In the case of **classification**, there are two possible formats:
 
-  1.  As in the case of regression, the data is stored in a single folder, with the labels stored in a separate file outside of the `root` folder, in a `.csv` file formatted as above.
-  2.  The data is stored in a folder hierarchy, with each subfolder containing the data for a single class. For instance, if we have three categories, the data is stored in a folder hierarchy as follows:
+    1.  As in the case of regression, the data is stored in a single folder, with the labels stored in a separate file outside of the `root` folder, in a `.csv` file formatted as above.
+    2.  The data is stored in a folder hierarchy, with each subfolder containing the data for a single class. For instance, if we have three categories, the data is stored in a folder hierarchy as follows:
 
-      ```
-      root
-      ├── class_1
-      │   ├── data_1
-      │   ├── data_2
-      │   └── data_3
-      ├── class_2
-      │   ├── data_4
-      │   ├── data_5
-      │   └── data_6
-      └── class_3
-          ├── data_7
-          ├── data_8
-          └── data_9
-      ```
+        ```
+        root
+        ├── class_1
+        │   ├── data_1
+        │   ├── data_2
+        │   └── data_3
+        ├── class_2
+        │   ├── data_4
+        │   ├── data_5
+        │   └── data_6
+        └── class_3
+            ├── data_7
+            ├── data_8
+            └── data_9
+        ```
 
-      Notice that, in this specific configuration, you don't need a file with labels, since the labels are already encoded in the folder hierarchy.
+        Notice that, in this specific configuration, you don't need a file with labels, since the labels are already encoded in the folder hierarchy.
 
-      You should account for both of these configurations in your implementation.
+        You should account for both of these configurations in your implementation.
 
 - [ ] The datasets should be able to load the data from the disk, both in a **lazy** and in an **eager** fashion. The eager implementation should **load all the data into memory at once**, while the lazy implementation should store only the data path and **load the data from the disk only when needed**.
       _Notice that this implementation does not necessarily need to be implemented with the usage of iterators or generators._
@@ -89,31 +89,31 @@ You will need to implement a hierarchy of classes to manage datasets.
 
 - [ ] You should create at least two datasets with these characteristics, one handling **images**, the other handling **audio files**.
 
-* For handling images, you can use one of many Python libraries for image processing, such as [Pillow](https://pillow.readthedocs.io/en/stable/) or [OpenCV](https://opencv.org/). Notice that OpenCV, while faster than Pillow, is using the BGR format for images, while Pillow is using the standard RGB format. You should be careful that images loaded into the datasets are in the RGB format.
+  * For handling images, you can use one of many Python libraries for image processing, such as [Pillow](https://pillow.readthedocs.io/en/stable/) or [OpenCV](https://opencv.org/). Notice that OpenCV, while faster than Pillow, is using the BGR format for images, while Pillow is using the standard RGB format. You should be careful that images loaded into the datasets are in the RGB format.
 
-* For handling audio files, you can use [Librosa](https://librosa.org/doc/latest/index.html), which is a Python library for audio processing. Notice that, for preprocessing reason, your data will be composed of a tuple (audio time series, sampling rate), which are the two fundamental inputs to Librosa preprocessing functions.
+  * For handling audio files, you can use [Librosa](https://librosa.org/doc/latest/index.html), which is a Python library for audio processing. Notice that, for preprocessing reason, your data will be composed of a tuple (audio time series, sampling rate), which are the two fundamental inputs to Librosa preprocessing functions.
 
-### BatchLoader class
+### BatchLoader class (3 pts.)
 
 The BatchLoader will be constructed on top of a dataset, and will be responsible for creating batches of data for training a model using, e.g., Stochastic Gradient Descent.
 
 - [ ] The BatchLoader should be able to create batches of data of a specified size.
 - [ ] The user should specify whether they want the batches to be created in a **random** or in a **sequential** fashion:
 
-* In the case of **random** batches, the BatchLoader should create batches of data by randomly shuffling the order of the data points and then creating batches of the specified size.
-* In the case of **sequential** batches, no shuffling should be performed, and the batches should be created in the original order of the data points.
+  * In the case of **random** batches, the BatchLoader should create batches of data by randomly shuffling the order of the data points and then creating batches of the specified size.
+  * In the case of **sequential** batches, no shuffling should be performed, and the batches should be created in the original order of the data points.
 
-Notice that, if `dataset_size // batch_size != 0` (i.e., the batch size is not a divisor of the dataset size), the last batch will be smaller than the specified batch size. You should let the user decide whether to use or to discard this last batch in case.
+  Notice that, if `dataset_size // batch_size != 0` (i.e., the batch size is not a divisor of the dataset size), the last batch will be smaller than the specified batch size. You should let the user decide whether to use or to discard this last batch in case.
 
-![](img/batches.png)
+  ![](img/batches.png)
 
-The image above summarizes the process that the BatchLoader is tasked with carrying out, both for the random batches (shuffling is performed) and sequential batches (shuffling is not performed).
+  The image above summarizes the process that the BatchLoader is tasked with carrying out, both for the random batches (shuffling is performed) and sequential batches (shuffling is not performed).
 
 - [ ] Within the BatchLoader, the batches are to be created only using the **indices** of the data points, and the data composing the batch should be loaded from the disk only when needed using an iterator.
 
 - [ ] If passed as argument to the `len` method, the BatchLoader should return the number of batches that can be created from the dataset with the specific batch size.
 
-### Data preprocessing
+### Data preprocessing (3 pts.)
 
 In this step, you are required to prepare at least **four** data preprocessing techniques as **callable classes** using OOP principles.
 
@@ -187,13 +187,13 @@ Use the **variadic arguments** option to implement the constructor.
 This class should have the same structure as any other preprocessing class (i.e. a callable class).
 Be careful that the application of preprocessing steps may not be **commutative**: for instance, applying resampling on a Mel spectrogram will raise an error.
 
-## Main
+## Main (1 pt.)
 
 In the main, you should showcase the usage of your library.
 
 Notice that, for images and audio, showing means actually plotting some sample images, while, for audio, it refers to playing some sample audio tracks.
 
-1. Create an image dataset and an audio dataset. Show how you can access your data. You may also plot some images using the `matplotlib.pyplot.imshow` method.
+1. [] Create an image dataset and an audio dataset. Show how you can access your data. You may also plot some images using the `matplotlib.pyplot.imshow` method.
 
 - Showcase a dataset with and without labels.
 - Showcase a dataset for classification and regression.
@@ -205,8 +205,8 @@ Notice that, for images and audio, showing means actually plotting some sample i
     - For images: object detection and segmentation are **not** image classification tasks; regression tasks can be, e.g., age estimation.
     - For audio: be careful not to use datasets for speech-to-text or other Natural Language Processing-related tasks (the labels are more complicated in this case); regression tasks can be for example [tempo estimation](https://github.com/CPJKU/BallroomAnnotations/blob/master/README.md).
 
-2. Create a BatchLoader on top of two of these datasets (one for image, one for audio). Show its functionality with and without shuffling, with and without option to discard the last batch.
-3. Create a pipeline of preprocessing steps, one for audio, one for images:
+2. [] Create a BatchLoader on top of two of these datasets (one for image, one for audio). Show its functionality with and without shuffling, with and without option to discard the last batch.
+3. [] Create a pipeline of preprocessing steps, one for audio, one for images:
 
 - Show how you can apply the pipeline on top of a BatchLoader output.
   ```python
@@ -221,64 +221,25 @@ Notice that, for images and audio, showing means actually plotting some sample i
     newdata = pipeline(dataset[i])
   ```
 
-<!-- ## Extra (up to 1 point): inference through a pretrained neural network
-
-If you feel like trying your hand at something more complex, you can try to implement a generic `Model` class wrapping a pre-existing model for image or audio classification/regression.
-The model should be able to perform inference on one or more data points of a dataset, and return the prediction as output.
-
-To do so, you can use pretrained neural networks on popular image benchmarks.
-The usage of the dataset ImageNet is not recommended, since it is too large to be used in this project, and it is currently unavailable for download in legal manners.
-You can use, for instance, the [Imagenette](https://github.com/fastai/imagenette) dataset. There are several available pretrained models on Imagenette, which you can find on GitHub with the `imagenette` topic: https://github.com/topics/imagenette.
-
-With reference to this ResNet18 implementation: https://github.com/GeorgeMLP/imagenette-classification, to make it work with your model, you will need to:
-
-   1. [Install PyTorch and Torchvision](https://pytorch.org/get-started/locally/)
-   2. Create the neural network (which will be wrapped by the `Model` class):
-
-        ```python
-        import torch
-        from torchvision import models
-
-        model = models.resnet18()
-        # this architecture has 1000 output classes (ImageNet)
-        # we need to replace the classification head to match
-        # the number of classes in Imagenette (10)
-        # replace classification head to match 10 output classes
-        model.fc = torch.nn.Linear(512, 10)
-
-        state_dict = torch.load("path/to/weights.pth", map_location="cpu")
-        # in this case, state dict contains three keys:
-        # 'net', 'optimizer', 'epoch'
-        # we have to select the weights which are contained
-        # in the 'net' key
-        model.load_state_dict(state_dict['net'])
-        ```
-
-      You have succesfully loaded the pretrained weights into the model! Now you're ready to do inference!
-
-   3. Load the Imagenette dataset using your dataset implementation & create a BatchLoader
-   4. Before running the inference, remember to set the model in evaluation mode:
-
-      ```python
-      model.eval()
-      ```
-
-   5. Remember, before passing the data to the model, to apply the preprocessing pipeline indicated in the repo: https://github.com/GeorgeMLP/imagenette-classification/blob/master/Training%20Model.py, see lines 25-30.
-
-# Demo
-
-You should create a demo script, which will be used to show the functionality of your code.
-The demo script should be able to:
-
-* Showcase the funcionality of the datasets:
-  * One lazy and one eager dataset
-  * One dataset with labels and one without labels
-  * One dataset with classification labels (using the ) and one with regression labels
-  *  -->
 
 # Generic indications
 
 Remind to always make use of the OOP concepts explained in the course:
 
-- Always implement encapsulation accordingly. All the attributes should be private, and the user should be able to access them only through getters and setters. The usage of the `@property` decorator is preferrable. Motivate any choice of public methods and attributes in the report.
--
+- [] Always implement encapsulation accordingly. All the attributes should be private, and the user should be able to access them only through getters and setters. The usage of the `@property` decorator is preferrable. Motivate any choice of public methods and attributes in the report.
+  - Remember type hints. Use the pipe operator `|` to concatenate multiple types. For collections, write inside brackets the expected type of elements (e.g., `List[int]`).
+  - Also, don't forget about the return types (even when `None`).
+- [] Make use of type checks. Code performing type checks should be better implemented as a private method, especially if repeated throughout the class.
+  - If you repeat code throughout different classes, you can either create an external class handling these tasks, or, if you have small utility functions (e.g., check int, convert something into something else) you can create a `util.py` script and put the functions there (outside the objects is fine as well); you may later access the functions as `from util import <utility_function>`
+- [] Make use of docstrings. Providing a documentation as HTML files (converted from the docstrings using software such as [sphinx](https://www.sphinx-doc.org/en/master/) or [napoleon](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/)) will provide a bouns of +0.5 points to the final score.
+- [] Take some moments for testing & refactoring. You don't need to use test-driven development for this project; nonetheless, you can still make use of specific tests to ensure that your code doesn't break when refactoring. Watch out for [code smells](https://refactoring.guru/refactoring/smells), especially bloaters [large class](https://refactoring.guru/smells/large-class) and [long method](https://refactoring.guru/smells/long-method).
+  - Smells like [duplicate code](https://refactoring.guru/smells/duplicate-code) and [ḍead code](https://refactoring.guru/smells/dead-code) are particularly bad since they (i) hinder readability and (ii) makes it easier to create bugs. These will be taken into account when grading
+  - Ignore the [Object-Orientation Abusers smell](https://refactoring.guru/refactoring/smells/oo-abusers) since this course is specifically focussed into OOP.
+- [] As previously mentioned, use your report to motivate your decisions, like usage of public attributes or methods, unusual/nonintuitive choices on type hints, decisions to use classes not indicated in the requirements, etc.
+- [] Attend the practicals for asking questions to the lecturers and the TAs.
+- [] Check your emails often for announcements. There is no excuse for not reading your RUG email.
+
+
+
+The minimum score for the project is 1.0; the maximum is 10.0. A grade higher than this score will be clipped to 10.0.
+  - As per course information, the project grade is worth 40% of the final grade for this course.
