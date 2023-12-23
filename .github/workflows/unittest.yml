@@ -1,0 +1,24 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Unit tests
+
+on:
+  push:
+    branches:
+      - main
+      - submission
+
+jobs:
+  unittest:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run setup script
+        run: pip3 install -r requirements.txt
+
+      - name: Test with unittest
+        run: python -m unittest discover -s part_1/src/tests  -p 'test_*.py'
