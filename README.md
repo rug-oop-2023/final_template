@@ -7,7 +7,7 @@ The project will need to contain the following elements:
   * A dataset wrapper, called `BatchLoader`, which handles the creation of batches of data for training a model.
 * A set of preprocessing tools for image and audio data
 
-The deadline for the assignment is set on **Sunday February 4th, 2024 23:59 CET**, without exceptions.
+The deadline for the project is set on **Sunday February 4th, 2024 23:59 CET**, without exceptions.
 
 This project is designed to be carried out in pairs.
 The way you split the load is up to you; however, you should ensure that both team members' load is approximately equal.
